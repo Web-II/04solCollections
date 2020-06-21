@@ -1,5 +1,5 @@
 // Deel1
-const alfabet = 'ABCDEFGHIJKLMOPQRSTUVWXYZ'.split('');
+const alfabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 const tecoderen = 'Errare humanum est.';
 const resultaat = tecoderen.toUpperCase().split('').map((value, index, array) => {return alfabet.includes(value) ? alfabet[(alfabet.indexOf(value) + 3) % 26]: value;});
 console.log(resultaat);
