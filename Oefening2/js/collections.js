@@ -1,16 +1,22 @@
 // Deel1
 const alfabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 const tecoderen = 'Errare humanum est.';
-const resultaat = tecoderen.toUpperCase().split('').map((value, index, array) => {return alfabet.includes(value) ? alfabet[(alfabet.indexOf(value) + 3) % 26]: value;});
+const resultaat = tecoderen
+  .toUpperCase()
+  .split('')
+  .map((value, index, array) => {
+    return alfabet.includes(value)
+      ? alfabet[(alfabet.indexOf(value) + 3) % 26]
+      : value;
+  });
 console.log(resultaat);
 
 // Deel 2
 function camelize(input) {
   return input
     .split('-') // my-long-word -> ['my', 'long', 'word']
-    .map(
-      (word, index) =>
-        index == 0 ? word : word[0].toUpperCase() + word.slice(1)
+    .map((word, index) =>
+      index == 0 ? word : word[0].toUpperCase() + word.slice(1)
     ) // ['my', 'long', 'word'] -> ['my', 'Long', 'Word']
     .join(''); // ['my', 'Long', 'Word'] -> myLongWord
 }
@@ -111,6 +117,11 @@ morse.set('(', '-.--.');
 morse.set('=', '-...-');
 morse.set('@', '.--.-.');
 
-const tekst = "I NEED HELP WITH JAVASCRIPT SOS";
-const result = tekst.toUpperCase().split('').map((value) => {return morse.has(value) ? morse.get(value) + " " : value;})
+const tekst = 'I NEED HELP WITH JAVASCRIPT SOS';
+const result = tekst
+  .toUpperCase()
+  .split('')
+  .map((value) => {
+    return morse.has(value) ? morse.get(value) + ' ' : value;
+  });
 console.log(result);

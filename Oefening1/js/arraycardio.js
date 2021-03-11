@@ -62,13 +62,13 @@ const people = [
 // Array.prototype.filter()
 // 1. Filter the list of inventors for those who were born in the 1500's
 const fifteen = inventors.filter(
-  inventor => inventor.year >= 1500 && inventor.year < 1600
+  (inventor) => inventor.year >= 1500 && inventor.year < 1600
 );
 console.table(fifteen);
 // Array.prototype.map()
 // 2. Give us an array of the inventor first and last names
 const fullNames = inventors.map(
-  inventor => `${inventor.first} ${inventor.last}`
+  (inventor) => `${inventor.first} ${inventor.last}`
 );
 console.log(fullNames);
 // Array.prototype.sort()
@@ -89,7 +89,7 @@ const totalYears = inventors.reduce((total, inventor) => {
 }, 0);
 console.log(totalYears);
 // 5. Sort the inventors by years lived
-const oldest = inventors.sort(function(a, b) {
+const oldest = inventors.sort(function (a, b) {
   const lastInventor = a.passed - a.year;
   const nextInventor = b.passed - b.year;
   return lastInventor > nextInventor ? -1 : 1;
@@ -123,7 +123,7 @@ const data = [
   'truck',
   'pogostick'
 ];
-const transportation = data.reduce(function(obj, item) {
+const transportation = data.reduce(function (obj, item) {
   if (!obj[item]) {
     obj[item] = 0;
   }
@@ -156,25 +156,25 @@ const comments = [
 //   }
 // });
 const isAdult = people.some(
-  person => new Date().getFullYear() - person.year >= 19
+  (person) => new Date().getFullYear() - person.year >= 19
 );
 console.log({ isAdult });
 // Array.prototype.every() // is everyone 19?
 const allAdults = people.every(
-  person => new Date().getFullYear() - person.year >= 19
+  (person) => new Date().getFullYear() - person.year >= 19
 );
 console.log({ allAdults });
 
 //9. Array.prototype.find()
 // Find is like filter, but instead returns just the one you are looking for
 // find the comment with the ID of 823423
-const comment = comments.find(comment => comment.id === 823423);
+const comment = comments.find((comment) => comment.id === 823423);
 console.log(comment);
 
 //10.  Array.prototype.findIndex()
 // Find the comment with this ID
 // delete the comment with the ID of 823423
-const index = comments.findIndex(comment => comment.id === 823423);
+const index = comments.findIndex((comment) => comment.id === 823423);
 console.log(index);
 // comments.splice(index, 1);
 const newComments = [...comments.slice(0, index), ...comments.slice(index + 1)];

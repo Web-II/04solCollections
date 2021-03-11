@@ -135,8 +135,8 @@ class Spel {
       );
 
       // doel krijgt nieuwe random positie
-      this._doel.x = Math.floor(Math.random() * this._zijdeCanvas / 10) * 10;
-      this._doel.y = Math.floor(Math.random() * this._zijdeCanvas / 10) * 10;
+      this._doel.x = Math.floor((Math.random() * this._zijdeCanvas) / 10) * 10;
+      this._doel.y = Math.floor((Math.random() * this._zijdeCanvas) / 10) * 10;
 
       // aantalDoelen wordt met 1 verhoogd
       this._aantalDoelen++;
@@ -190,7 +190,7 @@ class SpelComponent {
     this._spel.slang.vierkanten.map((value, index, array) => {
       this._ctx.fillStyle = value.kleur;
       this._ctx.fillRect(value.x, value.y, value.zijde, value.zijde);
-    })
+    });
     document.getElementById(
       'opgegetenDoelen'
     ).innerHTML = this._spel.aantalDoelen;
@@ -204,34 +204,31 @@ class SpelComponent {
 
 function init() {
   const spelComponent = new SpelComponent(this);
-  document.onkeydown = function(event) {
+  document.onkeydown = function (event) {
     // pijltjestoets naar links
-    if (event.keyCode === 37) {
+    if (event.key === 'ArrowLeft') {
       spelComponent.spel.richtingSlangInstellen(-10, 0);
-    } else if (event.keyCode === 38) {
+    } else if (event.key === 'ArrowUp') {
       // pijltjestoets naar boven
       spelComponent.spel.richtingSlangInstellen(0, -10);
-    } else if (event.keyCode === 39) {
+    } else if (event.key === 'ArrowRight') {
       // pijltjestoets naar rechts
       spelComponent.spel.richtingSlangInstellen(10, 0);
-    } else if (event.keyCode === 40) {
+    } else if (event.key === 'ArrowDown') {
       // pijltjestoets naar beneden
       spelComponent.spel.richtingSlangInstellen(0, 10);
     }
     spelComponent.speelSpel();
   };
 
-  // Als je wil dat de slang vanzelf beweegt, kan je het 
+  // Als je wil dat de slang vanzelf beweegt, kan je het
   // volgende stukje uit commentaar zetten
-  // In essentie wil dit zeggen dat de functie speelSpel 
+  // In essentie wil dit zeggen dat de functie speelSpel
   // iedere 200 ms uitgevoerd wordt
-  
-  setInterval(function() {
+
+  setInterval(function () {
     spelComponent.speelSpel();
   }, 200);
-  
-
 }
-
 
 window.onload = init;

@@ -166,12 +166,12 @@ class Spel {
       let y1Snijpunt = (2 * this._speler.y - sqrtD) / 2;
       let y2Snijpunt = (2 * this._speler.y + sqrtD) / 2;
       if (
-        (y1 < y2 && (y1Snijpunt >= y1 && y1Snijpunt <= y2)) ||
+        (y1 < y2 && y1Snijpunt >= y1 && y1Snijpunt <= y2) ||
         (y2Snijpunt >= y1 && y2Snijpunt <= y2)
       )
         return true;
       if (
-        (y2 < y1 && (y1Snijpunt >= y2 && y1Snijpunt <= y1)) ||
+        (y2 < y1 && y1Snijpunt >= y2 && y1Snijpunt <= y1) ||
         (y2Snijpunt >= y2 && y2Snijpunt <= y1)
       )
         return true;
@@ -187,12 +187,12 @@ class Spel {
       let x1Snijpunt = (2 * this._speler.x - sqrtD) / 2;
       let x2Snijpunt = (2 * this._speler.x + sqrtD) / 2;
       if (
-        (x1 < x2 && (x1Snijpunt >= x1 && x1Snijpunt <= x2)) ||
+        (x1 < x2 && x1Snijpunt >= x1 && x1Snijpunt <= x2) ||
         (x2Snijpunt >= x1 && x2Snijpunt <= x2)
       )
         return true;
       if (
-        (x2 < x1 && (x1Snijpunt >= x2 && x1Snijpunt <= x1)) ||
+        (x2 < x1 && x1Snijpunt >= x2 && x1Snijpunt <= x1) ||
         (x2Snijpunt >= x2 && x2Snijpunt <= x1)
       )
         return true;
@@ -259,8 +259,8 @@ class SpelComponent {
 
   speelSpel() {
     if (this._spel.speel()) {
-            alert("Je hebt het doel bereikt");
-            this._spel = new Spel (this._cv);
+      alert('Je hebt het doel bereikt');
+      this._spel = new Spel(this._cv);
     }
     this.tekenSpel();
   }
@@ -268,17 +268,17 @@ class SpelComponent {
 
 function init() {
   const spelComponent = new SpelComponent(this);
-  document.onkeydown = function(event) {
+  document.onkeydown = function (event) {
     // pijltjestoets naar links
-    if (event.keyCode === 37) {
+    if (event.key === 'ArrowLeft') {
       spelComponent.spel.verplaatsSpeler(-10, 0);
-    } else if (event.keyCode === 38) {
+    } else if (event.key === 'ArrowUp') {
       // pijltjestoets naar boven
       spelComponent.spel.verplaatsSpeler(0, -10);
-    } else if (event.keyCode === 39) {
+    } else if (event.key === 'ArrowRight') {
       // pijltjestoets naar rechts
       spelComponent.spel.verplaatsSpeler(10, 0);
-    } else if (event.keyCode === 40) {
+    } else if (event.key === 'ArrowDown') {
       // pijltjestoets naar beneden
       spelComponent.spel.verplaatsSpeler(0, 10);
     }

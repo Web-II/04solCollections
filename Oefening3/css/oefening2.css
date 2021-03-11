@@ -3,13 +3,13 @@ body {
    padding: 0px;
 }
 
-.main{
+.main {
    width: 850px;
    margin-left: auto;
    margin-right: auto;
 }
 
-#tekenCanvas{
+#gameCanvas {
    background-color: aliceblue;
-   border: 1px solid red;
+   border: 1px solid black;
 }
