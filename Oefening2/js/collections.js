@@ -1,15 +1,28 @@
-// Deel1
+// Deel 1
 const alfabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-const tecoderen = 'Errare humanum est.';
-const resultaat = tecoderen
-  .toUpperCase()
-  .split('')
-  .map((value, index, array) => {
-    return alfabet.includes(value)
-      ? alfabet[(alfabet.indexOf(value) + 3) % 26]
-      : value;
-  });
-console.log(resultaat);
+const teCoderen = 'ERRARE HUMANUM EST.';
+const teDecoderen = 'SHUIHFW! BRX DUH GRLQJ JUHDW, NHHS LW XS!';
+const code = 3;
+
+const codeer = function (teCoderen, code, alfabet) {
+  return teCoderen
+    .split('')
+    .map((value) => {
+      let index = alfabet.indexOf(value);
+      if (index !== -1) return alfabet[(index + code) % alfabet.length];
+      else return value;
+    })
+    .join('');
+};
+
+const decodeer = function (teDecoderen, code, alfabet) {
+  return codeer(teDecoderen, code, alfabet.reverse());
+};
+
+console.log(`"${teCoderen}" is gecodeerd "${codeer(teCoderen, 3, alfabet)}"\n`);
+console.log(
+  `"${teDecoderen}" is gedecodeerd "${decodeer(teDecoderen, 3, alfabet)}"`
+);
 
 // Deel 2
 function camelize(input) {
